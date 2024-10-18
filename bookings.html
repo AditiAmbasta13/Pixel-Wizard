@@ -8,6 +8,28 @@
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="./styles/bookings.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles for the alert */
+        .alert-container {
+            position: fixed;
+            top: -100px; /* Start off-screen */
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            transition: top 0.5s ease-in-out;
+        }
+        .alert {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Public Sans', sans-serif;
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
     <div id="stars-background"></div>
@@ -42,9 +64,9 @@
     </header>
     <div class="container">
         <h1 class="event-heading">Book Sessions</h1>
-        <!-- <div class="header">
-            <div class="logo"><span>Mind</span><span>Field</span></div>
-        </div> -->
+        <div class="alert-container" id="alertContainer">
+            <div class="alert" id="alertMessage"></div>
+        </div>
         <div class="booking-section1">
             <div class="profile">
                 <div class="profile-pic">
@@ -86,5 +108,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="./scripts/home.js"></script>
     <script src="./scripts/bookings.js"></script>
+    <script>
+        // Function to show alert
+        function showAlert(message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertMessage = document.getElementById('alertMessage');
+            alertMessage.textContent = message;
+            
+            // Show the alert
+            alertContainer.style.top = '20px';
+            
+            // Hide the alert after 3 seconds
+            setTimeout(() => {
+                alertContainer.style.top = '-100px';
+            }, 3000);
+        }
+
+        // Modified continue button click event
+        document.getElementById('continue-btn').addEventListener('click', function() {
+            const mentorName = document.querySelector('.profile h2').textContent;
+            const selectedDate = document.getElementById('selected-date').textContent;
+            const selectedTime = document.querySelector('.time-slot.selected')?.textContent || 'No time selected';
+
+            if (selectedTime !== 'No time selected') {
+                // Your existing booking logic here...
+
+                // After successful booking, show the alert with details
+                showAlert(`Session booked successfully with ${mentorName} on ${selectedDate} at ${selectedTime}`);
+            } else {
+                showAlert('Please select a time slot before continuing.');
+            }
+        });
+    </script>
 </body>
 </html>

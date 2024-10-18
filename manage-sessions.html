@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        body{
+            margin-left: 100px;
+        }
+
         .manage-sessions-container {
-            max-width: 800px;
+            max-width: 1300px;
             margin: 2rem auto;
             padding: 2rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
         }
         .session-request {
-            background-color: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid white;
             padding: 1rem;
             margin-bottom: 1rem;
-            border-radius: 5px;
         }
         .session-actions {
             display: flex;
@@ -34,11 +34,11 @@
             margin-left: 0.5rem;
         }
         .btn-accept {
-            background-color: #4CAF50;
-            color: white;
+            background-color: var(--secondary);
+            color: black;
         }
         .btn-reject {
-            background-color: #f44336;
+            background-color: var(--primary);
             color: white;
         }
         .comment-area {
@@ -50,6 +50,37 @@
             background-color: rgba(255, 255, 255, 0.1);
             color: var(--secondary);
         }
+        .wavy-background {
+        position: fixed;
+        top: 0%;
+        left: 10%;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.7;
+        transform: rotate(30deg);
+    }
+    .wave {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .wave-1 {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='%23F702B2' stroke-width='2' stroke-dasharray='5,5' d='M0,160 C320,300,420,0,740,160 C1060,320,1120,80,1440,160'/%3E%3C/svg%3E") repeat-x;
+        animation: wave 20s linear infinite;
+    }
+    .wave-2 {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='%238A2BE2' stroke-width='2' stroke-dasharray='5,5' d='M0,160 C320,20,420,280,740,160 C1060,40,1120,240,1440,160'/%3E%3C/svg%3E") repeat-x;
+        animation: wave 15s linear infinite;
+    }
+    .wave-3 {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='%234B0082' stroke-width='2' stroke-dasharray='5,5' d='M0,160 C320,100,420,200,740,160 C1060,120,1120,180,1440,160'/%3E%3C/svg%3E") repeat-x;
+        animation: wave 18s linear infinite;
+    }
+    @keyframes wave {
+        0% { background-position-x: 0; }
+        100% { background-position-x: 1440px; }
+    }
     </style>
 </head>
 <body>
@@ -64,19 +95,27 @@
             <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
             <li><a href="#" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
             <li><a href="#" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Courses</span></a></li>
-            <li><a href="#" title="Profile"><i class="fa-regular fa-user"style="font-size: 18px; color: var(--secondary);"></i><span>Profile</span></a></li>
+            <li><a href="mentor-profile.html" title="Profile"><i class="fa-regular fa-user"style="font-size: 18px; color: var(--secondary);"></i><span>Profile</span></a></li>
         </ul>
     </nav>
     <header>
         <nav class="top-nav">
             <div class="nav-items-logo">
-                <img src="./images/name_logo.png" alt="LearnyVerse" style="width: 150px;">
+                <img src="./images/community.png" alt="">
+                <a href="#" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/profile.png" alt="">
+                <a href="#" class="nav-item">Profile</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/logout.png" alt="" style="margin-bottom: 8px;">
+                <a href="#" class="nav-item highlight">Logout</a>
             </div>
         </nav>
     </header>
-
+    <h1 class="event-heading" id="eventsTitle">Manage Sessions</h1>
     <main class="manage-sessions-container">
-        <h1>Manage Session Requests</h1>
         <div id="sessionRequests">
             <!-- Session requests will be dynamically added here -->
         </div>
@@ -87,9 +126,9 @@
     <script>
         // Mock data for session requests
         const sessionRequests = [
-            { id: 1, mentee: "John Doe", topic: "Introduction to JavaScript", date: "2024-10-25", time: "14:00" },
-            { id: 2, mentee: "Jane Smith", topic: "Advanced React Concepts", date: "2024-10-26", time: "15:30" },
-            { id: 3, mentee: "Bob Johnson", topic: "Database Design Principles", date: "2024-10-27", time: "10:00" }
+            { id: 1, mentee: "John Doe", topic: "⭐Introduction to JavaScript", date: "2024-10-25", time: "14:00" },
+            { id: 2, mentee: "Jane Smith", topic: "⭐Advanced React Concepts", date: "2024-10-26", time: "15:30" },
+            { id: 3, mentee: "Bob Johnson", topic: "⭐Database Design Principles", date: "2024-10-27", time: "10:00" }
         ];
 
         function renderSessionRequests() {

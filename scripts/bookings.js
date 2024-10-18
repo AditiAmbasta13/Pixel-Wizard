@@ -133,11 +133,11 @@ nextMonthBtn.addEventListener('click', () => {
     createCalendar(currentDate.getFullYear(), currentDate.getMonth());
 });
 
-continueBtn.addEventListener('click', () => {
-    if (selectedDate && selectedTimeSlot) {
-        alert(`Booking confirmed for ${selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} at ${selectedTimeSlot}`);
-    }
-});
+// continueBtn.addEventListener('click', () => {
+//     if (selectedDate && selectedTimeSlot) {
+//         alert(`Booking confirmed for ${selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} at ${selectedTimeSlot}`);
+//     }
+// });
 
 createCalendar(currentDate.getFullYear(), currentDate.getMonth());
 createTimeSlots();
