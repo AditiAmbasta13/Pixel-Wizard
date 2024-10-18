@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learny Verse - Events Board</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="./styles/events-board.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="stars-background"></div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="#" title="Mentorship"><i class="fas fa-user-friends"></i><span>Mentorship</span></a></li>
+            <li><a href="#" title="Courses"><i class="fas fa-book"></i><span>Courses</span></a></li>
+            <li><a href="#" title="Profile"><i class="fas fa-user"></i><span>Profile</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <div class="logo">Learny Verse</div>
+        <nav>
+            <a href="#" class="nav-item">Community</a>
+            <a href="#" class="nav-item">Dashboard</a>
+            <a href="#" class="nav-item highlight">Logout</a>
+        </nav>
+    </header>
+
+    <main class="events-board">
+        <h1>Events Board</h1>
+        <div class="kanban-board">
+            <div class="column to-do">
+                <h2>To Do</h2>
+                <div class="card-container" id="to-do-container"></div>
+            </div>
+            <div class="column doing">
+                <h2>Doing</h2>
+                <div class="card-container" id="doing-container"></div>
+            </div>
+            <div class="column done">
+                <h2>Done</h2>
+                <div class="card-container" id="done-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="./scripts/home.js"></script>
+    <script src="./scripts/events-board.js"></script>
+</body>
+</html>

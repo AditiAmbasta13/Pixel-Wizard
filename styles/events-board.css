@@ -1,0 +1,56 @@
+.events-board {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.events-board h1 {
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.kanban-board {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.column {
+    border-radius: 10px;
+    padding: 1rem;
+    width: calc(33.33% - 1.33rem);
+}
+
+.column h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.card-container {
+    min-height: 300px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card h3 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text);
+    font-size: 0.9rem;
+}
