@@ -1,0 +1,246 @@
+:root {
+    --purple: #295DEA;
+    --additional-2: #FAE500;
+    --gray-5: #0B0B0E;
+    --gray-18: #282933;
+    --gray-25: #383947;
+    --gray-45: #656680;
+    --gray-56: #81839C;
+    --gray-75: #B8B8C7;
+    --primary: #F702B2;
+    --secondary: #2FFED9;
+    --background: #040b12;
+    --text: #FFFFFF;
+}
+
+@font-face {
+    font-family: 'Pneuemontreal';
+    src: url('../fonts/ppneuemontreal-book.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0 auto;
+    font-family: 'Pneuemontreal', 'Public Sans', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden
+}
+
+.container {
+    font-family: 'Pneuemontreal';
+    max-width: 1400px;
+    margin-left: 100px;
+}
+.header {
+    font-family: 'Pneuemontreal';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.logo span:first-child {
+    color: var(--primary);
+}
+.logo span:last-child {
+    color: var(--secondary);
+}
+.nav-icons {
+    display: flex;
+    gap: 15px;
+}
+.nav-icons div {
+    width: 30px;
+    height: 30px;
+    background-color: var(--gray-25);
+    border-radius: 50%;
+}
+.back-button {
+    background-color: var(--gray-25);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.logo-img{
+    width: 250px;
+    margin-right: 60px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--gray-45);
+}
+
+.profile-pic-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.booking-container {
+    display: flex;
+    gap: 20px;
+}
+.calendar {
+    flex: 2;
+    background-color: var(--gray-18);
+    border-radius: 10px;
+    padding: 20px;
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.calendar-nav {
+    display: flex;
+    gap: 10px;
+}
+.calendar-nav button {
+    background-color: var(--gray-25);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Public Sans', sans-serif;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+.time-slots {
+    font-family: 'Pneuemontreal';
+    flex: 1;
+    background-color: var(--gray-18);
+    border-radius: 10px;
+    padding: 20px;
+}
+.time-slot {
+    background-color: var(--gray-25);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.time-slot.selected {
+    background-color: var(--secondary);
+    color: var(--gray-5);
+}
+.continue-button {
+    background-color: var(--secondary);
+    color: var(--gray-5);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: bold;
+}
+.schedule {
+    margin-top: 20px;
+}
+.schedule-item {
+    background-color: var(--gray-25);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.booking-section1{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'PP Neue Montreal', 'Public Sans', sans-serif;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+.calendar-day {
+    background-color: var(--gray-25);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.calendar-day.available {
+    background-color: var(--gray-45);
+}
+.calendar-day.selected {
+    background-color: var(--primary);
+}
+.calendar-day.booked {
+    background-color: var(--purple);
+}
+.calendar-weekday {
+    text-align: center;
+    font-weight: bold;
+    color: var(--gray-75);
+}
+.time-slot.booked {
+    background-color: var(--purple);
+    cursor: not-allowed;
+}
+.time-slot.booked::after {
+    content: attr(data-session);
+    display: block;
+    font-size: 0.8em;
+    color: var(--gray-75);
+}
+.wavy-background {
+    position: fixed;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+    transform: rotate(5deg);
+}
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.wave-1 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='%23F702B2' stroke-width='2' stroke-dasharray='5,5' d='M0,160 C320,300,420,0,740,160 C1060,320,1120,80,1440,160'/%3E%3C/svg%3E") repeat-x;
+    animation: wave 20s linear infinite;
+}
+.wave-2 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='%238A2BE2' stroke-width='2' stroke-dasharray='5,5' d='M0,160 C320,20,420,280,740,160 C1060,40,1120,240,1440,160'/%3E%3C/svg%3E") repeat-x;
+    animation: wave 15s linear infinite;
+}
+.wave-3 {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320'%3E%3Cpath fill='none' stroke='%234B0082' stroke-width='2' stroke-dasharray='5,5' d='M0,160 C320,100,420,200,740,160 C1060,120,1120,180,1440,160'/%3E%3C/svg%3E") repeat-x;
+    animation: wave 18s linear infinite;
+}
+@keyframes wave {
+    0% { background-position-x: 0; }
+    100% { background-position-x: 1440px; }
+}

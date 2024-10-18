@@ -10,25 +10,38 @@
 </head>
 <body>
     <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
     <nav class="sidebar">
         <ul>
-            <li><a href="home.html" title="Home"><i class="fas fa-home"></i><span>Home</span></a></li>
-            <li><a href="#" title="Mentorship"><i class="fas fa-user-friends"></i><span>Mentorship</span></a></li>
-            <li><a href="#" title="Courses"><i class="fas fa-book"></i><span>Courses</span></a></li>
-            <li><a href="#" title="Profile"><i class="fas fa-user"></i><span>Profile</span></a></li>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="#" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="#" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Courses</span></a></li>
+            <li><a href="#" title="Profile"><i class="fa-regular fa-user"style="font-size: 18px; color: var(--secondary);"></i><span>Profile</span></a></li>
         </ul>
     </nav>
     <header>
-        <div class="logo">Learny Verse</div>
-        <nav>
-            <a href="#" class="nav-item">Community</a>
-            <a href="#" class="nav-item">Dashboard</a>
-            <a href="#" class="nav-item highlight">Logout</a>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/community.png" alt="">
+                <a href="#" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/profile.png" alt="">
+                <a href="#" class="nav-item">Profile</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/logout.png" alt="" style="margin-bottom: 8px;">
+                <a href="#" class="nav-item highlight">Logout</a>
+            </div>
         </nav>
     </header>
 
+    <h1 class="event-heading" id="eventsTitle">Events Board</h1>
     <main class="events-board">
-        <h1>Events Board</h1>
         <div class="kanban-board">
             <div class="column to-do">
                 <h2>To Do</h2>
@@ -47,6 +60,74 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="./scripts/home.js"></script>
-    <script src="./scripts/events-board.js"></script>
+    <script>
+        // Mock data for events
+        const mentorEvents = [
+            { topic: "Introduction to JavaScript", mentee: "John Doe", date: "2024-10-25", time: "14:00", status: "to-do" },
+            { topic: "Advanced React Concepts", mentee: "Jane Smith", date: "2024-10-26", time: "15:30", status: "doing" },
+            { topic: "Database Design Principles", mentee: "Bob Johnson", date: "2024-10-27", time: "10:00", status: "done" }
+        ];
+
+        const menteeEvents = [
+            { topic: "Python for Beginners", mentor: "Alice Brown", date: "2024-10-28", time: "13:00", status: "to-do" },
+            { topic: "Python for Beginners", mentor: "Alice Brown", date: "2024-10-28", time: "13:00", status: "to-do" },
+            { topic: "Machine Learning Basics", mentor: "Charlie Green", date: "2024-10-29", time: "16:00", status: "doing" },
+            { topic: "Machine Learning Basics", mentor: "Charlie Green", date: "2024-10-29", time: "16:00", status: "doing" },
+            { topic: "Machine Learning Basics", mentor: "Charlie Green", date: "2024-10-29", time: "16:00", status: "doing" },
+            { topic: "Web Security Fundamentals", mentor: "David White", date: "2024-10-30", time: "11:00", status: "done" }
+        ];
+
+        function createEventCard(event, userType) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${event.topic}</h3>
+                <p>${userType === 'mentor' ? 'Mentee' : 'Mentor'}: ${event[userType === 'mentor' ? 'mentee' : 'mentor']}</p>
+                <p>Date: ${event.date} Time: ${event.time}</p>
+            `;
+            return card;
+        }
+
+        function renderEvents(events, userType) {
+            const todoContainer = document.getElementById('to-do-container');
+            const doingContainer = document.getElementById('doing-container');
+            const doneContainer = document.getElementById('done-container');
+
+            todoContainer.innerHTML = '';
+            doingContainer.innerHTML = '';
+            doneContainer.innerHTML = '';
+
+            events.forEach(event => {
+                const card = createEventCard(event, userType);
+                switch (event.status) {
+                    case 'to-do':
+                        todoContainer.appendChild(card);
+                        break;
+                    case 'doing':
+                        doingContainer.appendChild(card);
+                        break;
+                    case 'done':
+                        doneContainer.appendChild(card);
+                        break;
+                }
+            });
+        }
+
+        // Get user type from URL parameter
+        // Get user type from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const userType = urlParams.get('userType');
+
+        // Show appropriate content based on user type
+        if (userType === 'mentor') {
+            document.getElementById('eventsTitle').textContent = 'Upcoming Teaching Sessions';
+            renderEvents(mentorEvents, 'mentor');
+        } else {
+            // Default to mentee view if userType is not 'mentor'
+            document.getElementById('eventsTitle').textContent = 'Upcoming Learning Sessions';
+            renderEvents(menteeEvents, 'mentee');
+        }
+
+    </script>
 </body>
 </html>

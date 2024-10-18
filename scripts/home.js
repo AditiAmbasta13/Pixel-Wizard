@@ -1,7 +1,7 @@
 // Create starry background
 function createStars() {
     const starsContainer = document.getElementById('stars-background');
-    const starCount = 4000;
+    const starCount = 5000;
 
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
@@ -36,7 +36,7 @@ function initAnimations() {
     gsap.from('.view-events-button', { opacity: 0, y: -30, duration: 1, delay: 0.3, ease: 'power3.out' });
     gsap.from('.tagline', { opacity: 0, y: 30, duration: 1, delay: 0.6, ease: 'power3.out' });
     gsap.from('.info-section', { opacity: 0, y: 30, duration: 1, delay: 0.9, ease: 'power3.out' });
-    gsap.from('.brain-icon', {
+    gsap.from('.logo', {
         opacity: 0,
         scale: 0.5,
         duration: 1,
@@ -57,3 +57,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Navigating to events board...');
     });
 });
+

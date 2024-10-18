@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnyVerse - Manage Sessions</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .manage-sessions-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+        }
+        .session-request {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        .session-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        .btn-accept {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-reject {
+            background-color: #f44336;
+            color: white;
+        }
+        .comment-area {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="#" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="#" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Courses</span></a></li>
+            <li><a href="#" title="Profile"><i class="fa-regular fa-user"style="font-size: 18px; color: var(--secondary);"></i><span>Profile</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/name_logo.png" alt="LearnyVerse" style="width: 150px;">
+            </div>
+        </nav>
+    </header>
+
+    <main class="manage-sessions-container">
+        <h1>Manage Session Requests</h1>
+        <div id="sessionRequests">
+            <!-- Session requests will be dynamically added here -->
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="./scripts/home.js"></script>
+    <script>
+        // Mock data for session requests
+        const sessionRequests = [
+            { id: 1, mentee: "John Doe", topic: "Introduction to JavaScript", date: "2024-10-25", time: "14:00" },
+            { id: 2, mentee: "Jane Smith", topic: "Advanced React Concepts", date: "2024-10-26", time: "15:30" },
+            { id: 3, mentee: "Bob Johnson", topic: "Database Design Principles", date: "2024-10-27", time: "10:00" }
+        ];
+
+        function renderSessionRequests() {
+            const container = document.getElementById('sessionRequests');
+            sessionRequests.forEach(request => {
+                const requestElement = document.createElement('div');
+                requestElement.className = 'session-request';
+                requestElement.innerHTML = `
+                    <h3>${request.topic}</h3>
+                    <p>Mentee: ${request.mentee}</p>
+                    <p>Date: ${request.date} Time: ${request.time}</p>
+                    <textarea class="comment-area" placeholder="Add a comment (optional)"></textarea>
+                    <div class="session-actions">
+                        <button class="btn btn-accept" onclick="handleRequest(${request.id}, 'accept')">Accept</button>
+                        <button class="btn btn-reject" onclick="handleRequest(${request.id}, 'reject')">Reject</button>
+                    </div>
+                `;
+                container.appendChild(requestElement);
+            });
+        }
+
+        function handleRequest(id, action) {
+            const comment = document.querySelector(`#sessionRequests > div:nth-child(${id}) textarea`).value;
+            // Here you would typically send this data to your server
+            console.log(`Request ${id} ${action}ed with comment: ${comment}`);
+            // Remove the request from the list
+            document.querySelector(`#sessionRequests > div:nth-child(${id})`).remove();
+        }
+
+        renderSessionRequests();
+    </script>
+</body>
+</html>

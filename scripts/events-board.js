@@ -5,12 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Simulated events data (replace with actual data fetching)
     const events = [
-        { id: 1, title: 'Introduction to JavaScript', status: 'to-do', date: '2024-10-20', time: '14:00' },
-        { id: 2, title: 'Introduction to JavaScript', status: 'to-do', date: '2024-10-20', time: '14:00' },
-        { id: 3, title: 'Advanced React Techniques', status: 'doing', date: '2024-10-22', time: '15:30' },
-        { id: 4, title: 'Python for Data Science', status: 'done', date: '2024-10-17', time: '10:00' },
-        { id: 5, title: 'Python for Data Science', status: 'done', date: '2024-10-17', time: '10:00' },
-        { id: 6, title: 'Python for Data Science', status: 'done', date: '2024-10-17', time: '10:00' },
+        { id: 1, title: '⭐ Introduction to JavaScript', status: 'to-do', date: '2024-10-20', time: '14:00' },
+        { id: 1, title: '⭐ Introduction to JavaScript', status: 'to-do', date: '2024-10-20', time: '14:00' },
+        { id: 1, title: '⭐ Introduction to JavaScript', status: 'to-do', date: '2024-10-20', time: '14:00' },
+        { id: 2, title: '⭐ Introduction to JavaScript', status: 'to-do', date: '2024-10-20', time: '14:00' },
+        { id: 3, title: '⭐ Advanced React Techniques', status: 'doing', date: '2024-10-22', time: '15:30' },
+        { id: 3, title: '⭐ Advanced React Techniques', status: 'doing', date: '2024-10-22', time: '15:30' },
+        { id: 3, title: '⭐ Advanced React Techniques', status: 'doing', date: '2024-10-22', time: '15:30' },
+        { id: 4, title: '⭐ Python for Data Science', status: 'done', date: '2024-10-17', time: '10:00' },
+        { id: 5, title: '⭐ Python for Data Science', status: 'done', date: '2024-10-17', time: '10:00' },
     ];
 
     function createEventCard(event) {

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Booking Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="./styles/bookings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="#" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="#" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Courses</span></a></li>
+            <li><a href="#" title="Profile"><i class="fa-regular fa-user"style="font-size: 18px; color: var(--secondary);"></i><span>Profile</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/community.png" alt="">
+                <a href="#" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/profile.png" alt="">
+                <a href="#" class="nav-item">Profile</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/logout.png" alt="" style="margin-bottom: 8px;">
+                <a href="#" class="nav-item highlight">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="event-heading">Book Sessions</h1>
+        <!-- <div class="header">
+            <div class="logo"><span>Mind</span><span>Field</span></div>
+        </div> -->
+        <div class="booking-section1">
+            <div class="profile">
+                <div class="profile-pic">
+                    <img src="https://www.svgrepo.com/show/404545/avatar-man-profile-user-3.svg" alt="" class="profile-pic-img">
+                </div>
+                <div>
+                    <h2>Floyd Miles</h2>
+                    <p>Time zone: Europe/Kyiv (GMT +3:00)</p>
+                </div>
+            </div>
+            <div>
+                <img src="./images/logo.png" alt="" class="logo-img">
+            </div>
+        </div>
+        <div class="booking-container">
+            <div class="calendar">
+                <h3>Choose a consultation date</h3>
+                <p>Pick a day and choose available time</p>
+                <div class="calendar-header">
+                    <h4 id="current-month">June 2024</h4>
+                    <div class="calendar-nav">
+                        <button id="prev-month">&lt;</button>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendar-grid"></div>
+            </div>
+                <div class="time-slots">
+                    <h3>Choose available time on <span id="selected-date">June 29</span></h3>
+                    <div id="time-slots-container"></div>
+                    <button class="continue-button" id="continue-btn" disabled>Continue</button>
+                    <div class="schedule">
+                        <h4>Your schedule on <span id="schedule-date">June 29</span></h4>
+                        <div id="schedule-container"></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="./scripts/home.js"></script>
+    <script src="./scripts/bookings.js"></script>
+</body>
+</html>

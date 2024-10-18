@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Profile</title>
+  <link rel="stylesheet" href="./styles/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    #stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+    .mentor-profile {
+        display: flex;
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 30px;
+        border: 2px solid #ffffff;  /* Changed to white */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);  /* Changed to white */
+    }
+
+    .left-section {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 30px;
+    }
+
+    .mentor-photo {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 25px;
+        border: 4px solid #F702B2;
+        box-shadow: 0 0 20px rgba(247, 2, 178, 0.5);
+    }
+
+    .mentor-name {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 25px;
+        color: #F702B2;
+        text-shadow: 0 0 10px rgba(247, 2, 178, 0.5);
+    }
+
+    .profile-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .btn {
+        background-color: #333;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 25px;
+        text-align: center;
+        width: 100%;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn:hover {
+        background-color: #F702B2;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(247, 2, 178, 0.4);
+    }
+
+    .book {
+        background-color: #F702B2;
+        color: #fff;
+    }
+
+    .book:hover {
+        background-color: #ff30c7;
+    }
+
+    .right-section {
+        width: 70%;
+        padding-left: 30px;
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .mentor-info p {
+        margin: 10px 0;
+        font-size: 1rem;
+        color: #cfcfcf;
+    }
+
+    .mentor-details h3 {
+        font-size: 1.6rem;
+        color: #F702B2;
+        margin: 25px 0 15px 0;
+    }
+
+    .mentor-details ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .mentor-details ul li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+    }
+
+    .mentor-details ul li::before {
+        content: '✓';
+        color: #F702B2;
+        position: absolute;
+        left: 0;
+    }
+
+    .popular {
+        color: #F702B2;
+        font-weight: bold;
+    }
+
+    .analytics {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .chart-container {
+        width: 48%;
+        margin-bottom: 20px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 1024px) {
+        .mentor-profile {
+            flex-direction: column;
+            width: 95%;
+        }
+        .left-section, .right-section {
+            width: 100%;
+            padding: 0;
+        }
+        .right-section {
+            border-left: none;
+            margin-top: 30px;
+        }
+        .chart-container {
+            width: 100%;
+        }
+    }
+  </style>
+</head>
+<body>
+    <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="#" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="#" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Courses</span></a></li>
+            <li><a href="mentor-profile.html" title="Profile"><i class="fa-regular fa-user"style="font-size: 18px; color: var(--secondary);"></i><span>Profile</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/community.png" alt="">
+                <a href="#" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/login.png" alt="">
+                <a href="login.html" class="nav-item">Login</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/sign-up.png" alt="">
+                <a href="signup.html" class="nav-item highlight">Sign up</a>
+            </div>
+        </nav>
+    </header>
+  <!-- Mentor Profile 1 -->
+  <main class="mentor-profile">
+    <!-- Left Section: Photo, Name, Buttons -->
+    <div class="left-section">
+      <img src="./images/Capture.JPG" alt="Mentor Image" class="mentor-photo">
+      <h2 class="mentor-name">Dr. Birmohan Singh</h2>
+      
+      <div class="profile-actions">
+        <button class="btn">Send Message</button>
+        <button class="btn">Send Feedback</button>
+        <button class="btn book">Book a Mentor</button>
+      </div>
+    </div>
+    
+    <!-- Right Section: Info, Details, and Analytics -->
+    <div class="right-section">
+      <div class="mentor-info">
+        <p class="reviews">⭐ 212 reviews</p>
+        <p class="position">Educational Qualification: Ph.D, M.E.</p>
+        <p>Phone: +91-1672-253208</p>
+        <p>e-mail: birmohansingh@sliet.ac.in , birmohans@gmail.com</p>
+        <p class="popular"><strong>Popular:</strong> 2 students booked this mentor in the last 24 hours</p>
+      </div>
+      
+      <section class="mentor-details">
+        <h3>About me</h3>
+        <p>I have 30 years of experience in mentoring students in Software Engineering, OS, OOP, Data Structures, etc.</p>
+        
+        <h3>What can I help with</h3>
+        <ul>
+          <li>Understanding Core Concepts</li>
+          <li>Practical Applications</li>
+          <li>Problem-Solving Techniques</li>
+          <li>Project Development</li>
+        </ul>
+        
+        <h3>Speaking Languages</h3>
+        <p>Hindi, English</p>
+        
+        <h4>Publications</h4>
+        <p>NN Group, UXhub</p>
+      </section>
+
+      <div class="analytics">
+        <div class="chart-container">
+          <canvas id="ratingChart1"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="bookingChart1"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Mentor Profile 2 -->
+  <main class="mentor-profile">
+    <!-- Left Section: Photo, Name, Buttons -->
+    <div class="left-section">
+      <img src="./images/Damanpreet.JPG" alt="Mentor Image" class="mentor-photo">
+      <h2 class="mentor-name">Dr. Damanpreet Singh</h2>
+      
+      <div class="profile-actions">
+        <button class="btn">Send Message</button>
+        <button class="btn">Send Feedback</button>
+        <button class="btn book">Book a Mentor</button>
+      </div>
+    </div>
+    
+    <!-- Right Section: Info, Details, and Analytics -->
+    <div class="right-section">
+      <div class="mentor-info">
+        <p class="reviews">⭐ 212 reviews</p>
+        <p class="position">Educational Qualification: Ph.D., M.Tech, B.Tech.</p>
+        <p>Phone: +91-1672-253210</p>
+        <p>e-mail: damanpreets@sliet.ac.in</p>
+        <p class="popular"><strong>Popular:</strong> 2 students booked this mentor in the last 24 hours</p>
+      </div>
+      
+      <section class="mentor-details">
+        <h3>About me</h3>
+        <p>I have 25 years of experience in teaching students. Currently, Associate Dean (ERP/SAMARTH, ACSS) and Incharge of the Network and Hardware Lab.</p>
+        
+        <h3>What can I help with</h3>
+        <ul>
+          <li>Understanding Core Concepts</li>
+          <li>Practical Applications</li>
+          <li>Problem-Solving Techniques</li>
+          <li>Project Development</li>
+        </ul>
+        
+        <h3>Speaking Languages</h3>
+        <p>Hindi, English</p>
+        
+        <h4>Publications</h4>
+        <p>NN Group, UXhub</p>
+      </section>
+
+      <div class="analytics">
+        <div class="chart-container">
+          <canvas id="ratingChart2"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="bookingChart2"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  
+  
+  <script>
+    // Function to create a rating chart
+function createRatingChart(canvasId, ratings) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
+            datasets: [{
+                label: 'Rating Distribution',
+                data: ratings,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 205, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(54, 162, 235, 0.6)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Function to create a booking chart
+function createBookingChart(canvasId, bookings) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Bookings per Month',
+                data: bookings,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Create charts for Mentor 1
+createRatingChart('ratingChart1', [5, 10, 20, 80, 97]);
+createBookingChart('bookingChart1', [10, 15, 20, 25, 30, 35]);
+
+// Create charts for Mentor 2
+createRatingChart('ratingChart2', [3, 8, 25, 85, 91]);
+createBookingChart('bookingChart2', [12, 18, 22, 28, 32, 38]);
+
+  </script>
+</body>
+</html>
