@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentors</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #F702B2;;
+            --secondary-color: #00ffff;
+            --background-color: #1a1a1a;
+            --card-background: #2a2a2a;
+            --gray-18: #282933;
+            --text-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin-left: 90px;
+            padding: 20px;
+        }
+
+        .search-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-section h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            background-color: transparent;
+            border: 1px solid white;
+        }
+
+        .search-bar button {
+            border: 1px solid white;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .field-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .field-filter {
+            padding: 8px 16px;
+            background-color: var(--card-background);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .field-filter.active {
+            background-color: var(--primary-color);
+        }
+
+        .mentors-count {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mentor-card {
+            background-color: var(--gray-18);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .mentor-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .mentor-info {
+            padding: 15px;
+        }
+
+        .mentor-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .view-profile{
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .mentor-rating {
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+
+        .mentor-details {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .mentor-price {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .mentor-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mentor-actions button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .book-button {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 10px;
+        }
+
+        .message-button {
+            background-color: transparent;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="stars-background"></div>
+<div class="wavy-background">
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+</div>
+<nav class="sidebar">
+    <ul>
+        <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+        <li><a href="mentors.html" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+        <li><a href="library.html" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Resources</span></a></li>
+        <li><a href="contact.html" title="Profile"><i class="fa-solid fa-phone"style="font-size: 18px; color: var(--secondary);"></i><span>Contact Us</span></a></li>
+    </ul>
+</nav>
+<header>
+    <nav class="top-nav">
+        <div class="nav-items-logo">
+            <img src="./images/community.png" alt="">
+            <a href="community.html" class="nav-item">Community</a>
+        </div>
+        <div class="nav-items-logo">
+            <img src="./images/login.png" alt="">
+            <a href="login.html" class="nav-item">Login</a>
+        </div>
+        <div class="nav-items-logo">
+            <img src="./images/sign-up.png" alt="">
+            <a href="signup.html" class="nav-item highlight">Sign up</a>
+        </div>
+    </nav>
+</header>
+
+    <div class="container">
+
+        <div class="search-section">
+            <h1>Mentors</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search by name or keywords">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="field-filters">
+            <div class="field-filter active">DESIGN (18)</div>
+            <div class="field-filter">ENGINEERING (212)</div>
+            <div class="field-filter">COMPUTER SCIENCE (348)</div>
+            <div class="field-filter">RECRUITER (37)</div>
+            <div class="field-filter">FULL-STACK (132)</div>
+            <div class="field-filter">DEVOPS (21)</div>
+        </div>
+        <div class="mentors-count">Found 68 mentors</div>
+        <div class="mentors-grid">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="./scripts/home.js"></script>
+    <script>
+        const mentors = [
+        {
+                name: "Dr. Birmohan Singh",
+                image: "./images/Capture.JPG",
+                rating: 5,
+                reviews: 50,
+                language: "English, Punjabi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D., M.E.",
+                popularity: "2 students booked this mentor in the last 24 hours",
+                field: "ENGINEERING",
+                profilelink: "./mentor-profiles/mentor-profile1.html"
+            },
+            {
+                name: "Dr. Damanpreet Singh",
+                image: "./images/Damanpreet.JPG",
+                rating: 5,
+                reviews: 45,
+                language: "English, Punjabi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D., M.Tech, B.Tech.",
+                popularity: "3 students booked this mentor in the last 24 hours",
+                field: "ENGINEERING",
+                profilelink: "./mentor-profiles/mentor-profile2.html"
+            },
+            {
+                name: "Dr. Major Singh Goraya",
+                image: "http://sliet.ac.in/wp-content/uploads/avatars/35/5e69c6be20c7e-bpfull.jpg",
+                rating: 4,
+                reviews: 40,
+                language: "English, Punjabi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D., M.Tech., B.Tech.",
+                popularity: "1 student booked this mentor in the last 24 hours",
+                field: "ENGINEERING",
+                profilelink: "./mentor-profiles/mentor-profile1.html"
+            },
+            {
+                name: "Dr. Manoj Sachan",
+                image: "http://sliet.ac.in/wp-content/uploads/avatars/6/605c66bd3e3bc-bpfull.jpg",
+                rating: 5,
+                reviews: 55,
+                language: "English, Hindi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D, M.E., B.Tech (Computer Science)",
+                popularity: "4 students booked this mentor in the last 24 hours",
+                field: "COMPUTER SCIENCE",
+                profilelink: "./mentor-profiles/mentor-profile2.html"
+            },
+            {
+                name: "Dr. Gurjinder Kaur",
+                image: "http://sliet.ac.in/wp-content/uploads/avatars/14/5f2245e7a7f1bde5dee5bda48e09d411-bpfull.jpg",
+                rating: 4,
+                reviews: 35,
+                language: "English, Punjabi",
+                position: "Associate Professor",
+                company: "SLIET",
+                experience: "Ph.D SLIET, M.S. BITS, B.E. Kyrgyz Technical University",
+                popularity: "2 students booked this mentor in the last 24 hours",
+                field: "ENGINEERING"
+            },
+            {
+                name: "Kristin Watson",
+                image: "./images/Capture.JPG",
+                rating: 5,
+                reviews: 50,
+                language: "Ukrainian (native), English (native)",
+                position: "UX/UI designer",
+                company: "Pixel Fantasy",
+                experience: "5+ years",
+                price: 100,
+                popularity: "2 students booked this mentor in the last 24 hours",
+                field: "DESIGN"
+            },
+        {
+                name: "Dr. Birmohan Singh",
+                image: "./images/Capture.JPG",
+                rating: 5,
+                reviews: 50,
+                language: "English, Punjabi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D., M.E.",
+                popularity: "2 students booked this mentor in the last 24 hours",
+                field: "RECRUITER"
+            },
+            {
+                name: "Dr. Damanpreet Singh",
+                image: "./images/Damanpreet.JPG",
+                rating: 5,
+                reviews: 45,
+                language: "English, Punjabi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D., M.Tech, B.Tech.",
+                popularity: "3 students booked this mentor in the last 24 hours",
+                field: "RECRUITER"
+            },
+            {
+                name: "Dr. Major Singh Goraya",
+                image: "http://sliet.ac.in/wp-content/uploads/avatars/35/5e69c6be20c7e-bpfull.jpg",
+                rating: 4,
+                reviews: 40,
+                language: "English, Punjabi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D., M.Tech., B.Tech.",
+                popularity: "1 student booked this mentor in the last 24 hours",
+                field: "DEVOPS"
+            },
+            {
+                name: "Dr. Manoj Sachan",
+                image: "http://sliet.ac.in/wp-content/uploads/avatars/6/605c66bd3e3bc-bpfull.jpg",
+                rating: 5,
+                reviews: 55,
+                language: "English, Hindi",
+                position: "Professor",
+                company: "SLIET",
+                experience: "Ph.D, M.E., B.Tech (Computer Science)",
+                popularity: "4 students booked this mentor in the last 24 hours",
+                field: "COMPUTER SCIENCE"
+            },
+            {
+                name: "Dr. Gurjinder Kaur",
+                image: "http://sliet.ac.in/wp-content/uploads/avatars/14/5f2245e7a7f1bde5dee5bda48e09d411-bpfull.jpg",
+                rating: 4,
+                reviews: 35,
+                language: "English, Punjabi",
+                position: "Associate Professor",
+                company: "SLIET",
+                experience: "Ph.D SLIET, M.S. BITS, B.E. Kyrgyz Technical University",
+                popularity: "2 students booked this mentor in the last 24 hours",
+                field: "ENGINEERING"
+            },
+            {
+                name: "Kristin Watson",
+                image: "./images/Capture.JPG",
+                rating: 5,
+                reviews: 50,
+                language: "Ukrainian (native), English (native)",
+                position: "UX/UI designer",
+                company: "Pixel Fantasy",
+                experience: "5+ years",
+                price: 100,
+                popularity: "2 students booked this mentor in the last 24 hours",
+                field: "FULL-STACK"
+            },
+            
+        ];
+
+        function createMentorCard(mentor) {
+            return `
+                <div class="mentor-card">
+                    <img src="${mentor.image}" alt="${mentor.name}">
+                    <div class="mentor-info">
+                        <div class="mentor-name">${mentor.name} ❤️</div>
+                        <div class="mentor-rating">${'★'.repeat(mentor.rating)} (${mentor.reviews} feedbacks)</div>
+                        <div class="mentor-details">
+                            <p>Speaking language: ${mentor.language}</p>
+                            <p>Position: ${mentor.position}</p>
+                            <p>Company: "${mentor.company}"</p>
+                            <p>Exp: ${mentor.experience}</p>
+                        </div>
+                        <div class="mentor-actions">
+                            <a href="bookings.html?mentor=${encodeURIComponent(mentor.name)}&image=${encodeURIComponent(mentor.image)}" class="book-button">BOOK A MENTOR</a>
+                            <a href="${mentor.profilelink}" class="view-profile">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        <p style="color: #00ffff; font-size: 12px; margin-top: 10px;">${mentor.popularity}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderMentors(filteredMentors) {
+            const mentorsGrid = document.querySelector('.mentors-grid');
+            mentorsGrid.innerHTML = filteredMentors.map(createMentorCard).join('');
+            document.querySelector('.mentors-count').textContent = `Found ${filteredMentors.length} mentors`;
+        }
+
+        function updateFilterCounts(mentors) {
+            const fieldCounts = mentors.reduce((acc, mentor) => {
+                acc[mentor.field] = (acc[mentor.field] || 0) + 1;
+                return acc;
+            }, {});
+
+            document.querySelectorAll('.field-filter').forEach(filter => {
+                const field = filter.textContent.split('(')[0].trim();
+                const count = fieldCounts[field] || 0;
+                filter.textContent = `${field} (${count})`;
+            });
+        }
+
+        function initFilters() {
+            const fieldFilters = document.querySelectorAll('.field-filter');
+            let activeFilter = 'ALL';
+
+            fieldFilters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    fieldFilters.forEach(f => f.classList.remove('active'));
+                    filter.classList.add('active');
+                    activeFilter = filter.textContent.split('(')[0].trim();
+                    
+                    const filteredMentors = activeFilter === 'ALL' 
+                        ? mentors 
+                        : mentors.filter(mentor => mentor.field === activeFilter);
+                    
+                    renderMentors(filteredMentors);
+                });
+            });
+
+            // Add "ALL" filter
+            const allFilter = document.createElement('div');
+            allFilter.className = 'field-filter active';
+            allFilter.textContent = 'ALL(12)';
+
+            updateFilterCounts(mentors);
+            renderMentors(mentors);
+        }
+
+        initFilters();
+    </script>
+</body>
+</html>

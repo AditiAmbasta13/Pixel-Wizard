@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community page</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body{
+            margin-left: 50px;
+        }
+
+#logo img{
+    height: 60px;
+}
+#extra img{
+    width: 100px;
+    border-radius: 500px;
+}
+#txt{
+    text-align: center;
+    color: rgba(0, 255, 255, 0.798);
+    font-size: 3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.community-heading{
+    margin-left: 40px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+#search_bar{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}       
+#search_bar input{
+    background-color: transparent;
+    border: 1px solid white;
+    font-size: 1rem;
+    border-radius: 5px 0 0 5px;
+    padding: 5px;
+    color: rgba(30, 30, 30, 0.589);
+    width: 50%;
+}
+#search_bar button{
+    background-color: var(--primary);
+    border-radius: 0 5px 5px 0;
+    padding: 9px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid white;
+}
+#search_bar button:hover{
+    background-color: rgba(255, 20, 147, 0.5);
+}
+       
+#content{
+    /* border: 1px solid red; */
+    margin: 60px;
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+}
+#commopt{
+    /* border: 1px solid pink; */
+    padding: 10px;
+    padding-right: 15px;
+    width: 50%;
+}
+.buts button{
+    background-color: rgb(63, 62, 62);
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 3px;
+    border-radius: 5px;
+    border: 1px solid rgb(63, 62, 62);
+    transition: background-color color 0.3s ease;
+}
+.buts button:hover{
+    background-color: rgba(33, 33, 33, 0.767);
+    color: rgba(255, 20, 147, 0.5);
+}
+
+.community-section{
+    border: 1px solid aqua;
+    border-radius: 7px;
+    margin: 4px;
+    color: white;
+    background-color: rgba(33, 33, 33, 0.767);
+    padding-left: 10px;
+    transition: background-color color 0.3s ease;
+}
+.community-section:hover,#more:hover{
+    background-color: rgba(71, 70, 70, 0.87)
+}
+.existing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(6, auto);  /* 6 rows */
+    gap: 20px;  /* space between the grid items */
+}
+.join-btn {
+    background-color: rgba(255, 20, 147, 0.8);
+    color: black;
+    padding: 8px 16px;
+    margin-bottom: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+}
+.join-btn:hover {
+    background-color: rgba(255, 20, 147, 0.5);
+}
+#more{
+    border: 1px solid aqua;
+    border-radius: 7px;
+    margin: 4px;
+    color: white;
+    background-color: rgba(33, 33, 33, 0.767);
+    padding-left: 10px;
+    font-size: 1rem;
+    padding: 7px;
+}
+
+#followed{
+    /* border: 1px solid pink; */
+    padding: 10px;
+    width: 50%;
+    margin-left: 30px;
+}
+#folltxt{
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-top: 0;
+    padding-top: 0;
+}
+.followed-com{
+    border: 1px solid grey;
+    border-radius: 7px;
+    margin: 4px;
+    padding: 10px;
+    padding-top: 2px;
+    color: white;
+    background-color: rgb(25, 25, 25);
+    transition: background-color color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.followed-com:hover{
+    background-color: rgb(0, 0, 0);
+    color: aqua;
+}
+.unread{
+    background-color: rgba(255, 20, 147, 0.8);
+    color: black;
+    padding: 8px 16px;
+    margin-bottom: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+}
+.unread:hover {
+    background-color: rgba(255, 20, 147, 0.5);
+}
+
+    </style>
+</head>
+<body>
+    <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="mentors.html" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="library.html" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Resources</span></a></li>
+            <li><a href="contact.html" title="Profile"><i class="fa-solid fa-phone"style="font-size: 18px; color: var(--secondary);"></i><span>Contact Us</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/community.png" alt="">
+                <a href="community.html" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/login.png" alt="">
+                <a href="login.html" class="nav-item">Login</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/sign-up.png" alt="">
+                <a href="signup.html" class="nav-item highlight">Sign up</a>
+            </div>
+        </nav>
+    </header>
+
+    <h1 class="community-heading" >Mentor Communities</h1>
+    <div id="search_bar">
+        <input type="text" class="search-input" id="community-search" placeholder="Search..." required>
+        <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div id="content">
+        <div id="commopt">
+            <div class="buts">
+                <button>Python</button>
+                <button>C++</button>
+                <button>JAVA</button>
+                <button>Frontend</button>
+                <button>Backend</button>
+                <button>Machine learning</button>
+                <button>Artificial Intelligence</button>
+                <button>Public speaking</button>
+                <button>Resume building</button>
+                <button>Communication</button>
+                <button>IOT</button>
+                <button>Data Science</button>
+                <button>More...</button>
+            </div>
+            <div class="existing">
+                <div class="community-section">
+                    <h3>Python Community</h3>
+                    <p>Faculty: Dr. Ramesh Kumar</p>
+                    <p>Followers: 4,850+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>C++ Community</h3>
+                    <p>Faculty: Prof. Anjali Gupta</p>
+                    <p>Followers: 3,670+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>JAVA Community</h3>
+                    <p>Faculty: Dr. Amit Patel</p>
+                    <p>Followers: 6,030+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Frontend Community</h3>
+                    <p>Faculty: Ms. Priya Sen</p>
+                    <p>Followers: 3,920+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Backend Community</h3>
+                    <p>Faculty: Dr. Neeraj Mishra</p>
+                    <p>Followers: 4,560+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Machine Learning Community</h3>
+                    <p>Faculty: Dr. Sunita Sharma</p>
+                    <p>Followers: 7,010+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Artificial Intelligence Community</h3>
+                    <p>Faculty: Prof. Manish Roy</p>
+                    <p>Followers: 6,230+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Public Speaking Community</h3>
+                    <p>Faculty: Dr. Kavita Rao</p>
+                    <p>Followers: 2,980+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Resume Building Community</h3>
+                    <p>Faculty: Ms. Reema Tiwari</p>
+                    <p>Followers: 2,460+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Communication Community</h3>
+                    <p>Faculty: Dr. Suresh Bhatt</p>
+                    <p>Followers: 3,340+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>IOT Community</h3>
+                    <p>Faculty: Prof. Rajiv Jain</p>
+                    <p>Followers: 2,980+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+                <div class="community-section">
+                    <h3>Data Science Community</h3>
+                    <p>Faculty: Dr. Nidhi Verma</p>
+                    <p>Followers: 5,560+</p>
+                    <button class="join-btn">Join Now</button>
+                </div>
+            </div>
+            <button id="more">More...</button>
+        </div>
+        <div id="followed">
+            <p id="folltxt">Your followed Communities:</p>
+            <div >
+                <div class="followed-com">
+                    <h3>UI/UX Community</h3>
+                    <button class="unread">22 unread messages</button>
+                </div>
+                <div class="followed-com">
+                    <h3>Resume building Community</h3>
+                    <button class="unread">6 unread messages</button>
+                </div>
+                <div class="followed-com">
+                    <h3>Aptitude Community</h3>
+                    <button class="unread">18 unread messages</button>
+                </div>
+                <div class="followed-com">
+                    <h3>Statistical analysis Community</h3>
+                    <button class="unread">114 unread messages</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="./scripts/home.js"></script>
+    <script>       
+        //for search bar
+        const searchInput = document.getElementById('community-search');
+        const communitySections = document.querySelectorAll('.community-section');
+
+        // Add keyup event listener to the search input
+        searchInput.addEventListener('keyup', function() {
+            const searchValue = searchInput.value.toLowerCase(); // Get the input value and convert to lowercase
+
+            // Loop through all community-section cards
+            communitySections.forEach(function(section) {
+                const communityName = section.querySelector('h3').textContent.toLowerCase(); // Get the community name and convert to lowercase
+
+                // Check if the community name includes the search input
+                if (communityName.includes(searchValue)) {
+                    section.style.display = 'block'; // Show the card if there's a match
+                } else {
+                    section.style.display = 'none'; // Hide the card if no match
+                }
+            });
+        });
+
+        //for buttons in .buts
+        const search_Input = document.getElementById('community-search');
+        const community_Sections = document.querySelectorAll('.community-section');
+        const buttons = document.querySelectorAll('.buts button'); // Get all buttons in .buts
+
+        // Event listener for search input
+        searchInput.addEventListener('keyup', function() {
+            const searchValue = search_Input.value.toLowerCase();
+
+            community_Sections.forEach(function(section) {
+                const communityName = section.querySelector('h3').textContent.toLowerCase();
+
+                if (communityName.includes(searchValue)) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        });
+
+        // Event listener for button clicks
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const buttonText = button.textContent.toLowerCase(); // Get the button text in lowercase
+
+                // Loop through community sections
+                community_Sections.forEach(function(section) {
+                    const communityName = section.querySelector('h3').textContent.toLowerCase();
+
+                    // Check if button text matches community name
+                    if (communityName.includes(buttonText)) {
+                        section.style.display = 'block'; // Show matching card
+                    } else {
+                        section.style.display = 'none'; // Hide non-matching cards
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

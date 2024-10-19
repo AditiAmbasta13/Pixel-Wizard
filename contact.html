@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .container {
+            max-width: 1200px;
+            margin-left: 90px;
+            padding: 20px;
+            color: var(--text-color);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .contact-info, .contact-form {
+            background-color: var(--gray-18);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .contact-info h2, .contact-form h2 {
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        .contact-form form {
+            display: grid;
+            gap: 15px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--secondary);
+            background-color: transparent;
+            color: var(--text-color);
+            border-radius: 5px;
+        }
+        .contact-form textarea {
+            height: 150px;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: var(--text-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="#" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="#" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Courses</span></a></li>
+            <li><a href="#" title="Profile"><i class="fa-regular fa-user"style="font-size: 18px; color: var(--secondary);"></i><span>Profile</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/community.png" alt="">
+                <a href="#" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/profile.png" alt="">
+                <a href="#" class="nav-item">Profile</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/logout.png" alt="" style="margin-bottom: 8px;">
+                <a href="#" class="nav-item highlight">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Mentor Street, Knowledge City, 12345</p>
+                <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@mentorconnect.com</p>
+                <p><i class="fas fa-clock"></i> Monday - Friday: 9am - 5pm</p>
+                <img src="./images/logo_learny_verse.png" alt="" style="width: 300px;">
+            </div>
+            <div class="contact-form">
+                <h2>Send us a Message</h2>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-main">
+            <img src="./images/name_logo.png" alt="" style="width: 20vw; height: 15vh;">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Mentorship</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@learnyverse.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LearnyVerse. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="./scripts/home.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to a server
+            // For this example, we'll just log it to the console
+            console.log('Form submitted');
+            alert('Thank you for your message. We will get back to you soon!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
