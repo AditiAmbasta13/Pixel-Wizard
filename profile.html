@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student profile</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+
+    width: 100%;
+    height: 100%;
+  }
+        .container {
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+    justify-content: center;
+}
+
+/* Sticky left container */
+.leftcontainer {
+    border: 1px solid rgb(30, 30, 30);
+    border-radius: 7px;
+    margin: 10px;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(30, 30, 30, 0.589);
+    position: sticky;
+    top: 20px; /* Sticks the leftcontainer 20px from the top when scrolling */
+}
+
+.leftcontainer img {
+    border-radius: 20px;
+    margin: 5px;
+    width: 280px;
+    height: 300px;
+}
+
+.card h2 {
+    color: aqua;
+    font-size: 2.2rem;
+}
+
+.card h4 {
+    color: rgba(255, 20, 147, 0.8);
+    padding: 0;
+}
+
+.card {
+    padding: 0;
+    margin: 0;
+}
+
+/* Right container styling */
+.rightcontainer {
+    border: 1px solid rgba(30, 30, 30, 0.589);
+    width: 60vw;
+    background-color: rgb(42, 42, 42);
+    border-radius: 7px;
+    color: white;
+    font-size: 1rem;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.rightcontainer img {
+    padding: 10px;
+}
+
+/* Mentor card section */
+.mentor-card {
+    display: flex;
+    flex-direction: row;
+    overflow-x: visible;
+}
+
+.mentor {
+    border: 1px solid rgba(255, 20, 147, 0.8);
+    border-radius: 6px;
+    margin: 10px;
+    transition: 0.5s ease;
+}
+
+.mentor:hover {
+    background-color: rgba(255, 20, 145, 0.172);
+    padding: 10px;
+}
+
+.mentor img {
+    border-radius: 50%;
+    width: 160px;
+    height: 140px;
+}
+
+.mentor p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Starry background */
+#stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: rgb(135, 135, 135);
+    border-radius: 50%;
+}
+.rightcontainer {
+            border: 1px solid rgba(30, 30, 30, 0.589);
+            width: 60vw;
+            background-color: rgb(42, 42, 42);
+            border-radius: 7px;
+            color: white;
+            font-size: 1rem;
+            padding: 20px;
+        }
+
+        .rightcontainer h4 {
+            color: aqua;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid aqua;
+            padding-bottom: 5px;
+        }
+
+        .rightcontainer ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .rightcontainer li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .rightcontainer li::before {
+            content: '•';
+            color: rgba(255, 20, 147, 0.8);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Mentor card section */
+        .mentor-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .mentor {
+            border: 1px solid rgba(255, 20, 147, 0.8);
+            border-radius: 6px;
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(25% - 20px);
+            transition: 0.5s ease;
+            text-align: center;
+        }
+
+        .mentor:hover {
+            background-color: rgba(255, 20, 145, 0.172);
+            transform: translateY(-5px);
+        }
+
+        .mentor img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .mentor p {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        .mentor p:first-of-type {
+            font-weight: bold;
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="mentors.html" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="library.html" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Resources</span></a></li>
+            <li><a href="contact.html" title="Profile"><i class="fa-solid fa-phone"style="font-size: 18px; color: var(--secondary);"></i><span>Contact Us</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/community.png" alt="">
+                <a href="community.html" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/profile.png" alt="">
+                <a href="profile.html" class="nav-item">Profile</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/logout.png" alt="" style="margin-bottom: 8px;">
+                <a href="#" class="nav-item highlight">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="leftcontainer">
+            <img src="https://media.istockphoto.com/id/1163294201/photo/smiling-confident-businesswoman-posing-with-arms-folded.jpg?s=612x612&w=0&k=20&c=9SY62tujbyx46_NbVH6pYAauliGvM0ixcaEfup9y_kU=" alt="img" style="object-fit: cover;">
+            <div class="card">
+                <h2>Neha Verma</h2>
+                <h4>DJSCE</h4>
+                <h4>3<sup>rd</sup> year</h4>
+                <h4>Computer Science and Engineering</h4>
+                <h4>neha.verma123@example.com</h4>
+            </div>
+            
+        </div>
+        <div class="rightcontainer">
+            <h4>Skills:</h4>
+            <ul>
+                <li>Python</li>
+                <li>Java</li>
+                <li>Web Development (HTML, CSS, JavaScript)</li>
+                <li>Machine Learning</li>
+                <li>Data Structures and Algorithms</li>
+                <li>Version Control (Git, GitHub)</li>
+            </ul>
+            <h4>Interests:</h4>
+            <ul>
+                <li>Artificial Intelligence</li>
+                <li>Full Stack Development</li>
+                <li>Open Source Contribution</li>
+                <li>Problem Solving (Competitive Programming)</li>
+                <li>Cloud Computing</li>
+                <li>UI/UX Design</li>
+            </ul>
+            <h4>Projects:</h4>
+            <ul>
+                <li>Personal Portfolio Website</li>
+                <li>Real-Time Object Detection using YOLOv9</li>
+                <li>Road Sign Recognition Quiz</li>
+                <li>Tetris Game in React</li>
+            </ul>
+            <h4>Achievements:</h4>
+            <ul>
+                <li>Google Summer of Code 2023: Contributed to an open-source project, improving its machine learning capabilities.</li>
+                <li>Hackathon Finalist: Secured a top 10 spot in the "HackXplore" national hackathon for developing an innovative cloud-based storage solution.</li>
+                <li>Leetcode 5-Star Coder: Solved over 300 problems with a specialization in dynamic programming and graph theory.</li>
+            </ul>
+            <h4>Certifications:</h4>
+            <ul>
+                <li>AWS Cloud Practitioner: Certified by Amazon Web Services in foundational cloud computing knowledge.</li>
+                <li>Coursera Specialization in Machine Learning: Completed a 4-course series covering key machine learning algorithms and hands-on projects.</li>
+                <li>Udemy Web Development Bootcamp: Comprehensive course on full-stack development covering front-end and back-end technologies.</li>
+            </ul>
+            <h4>Extracurricular Activities:</h4>
+            <ul>
+                <li>Coding Club Lead: Organized and conducted coding workshops at DJSCE, helping over 50 peers improve their problem-solving skills.</li>
+                <li>Volunteer for Girl Code It: Actively supports initiatives encouraging women in tech through mentoring and workshops.</li>
+                <li>TEDx Speaker: Presented a talk on "The Future of AI in Everyday Life" at TEDxDJSCE.</li>
+            </ul>
+            <h4>Future Goals:</h4>
+            <ul>
+                <li>Aspires to work in AI Research and Development, with a focus on ethical AI systems.</li>
+                <li>Exploring opportunities to lead open-source communities and mentor budding developers.</li>
+            </ul>
+
+            <h4>Mentors:</h4>
+            <div class="mentor-card">
+                <div class="mentor">
+                    <img src="https://media.istockphoto.com/id/1318482009/photo/young-woman-ready-for-job-business-concept.jpg?s=612x612&w=0&k=20&c=Jc1NcoUMoM78AxPTh9EApaPU2kXh2evb499JgW99b0g=" alt="">
+                    <p>Dr. Pravin Hemant</p>
+                    <p>Leetcode tricks</p>
+                </div>
+                <div class="mentor">
+                    <img src="https://media.istockphoto.com/id/1217962587/photo/portrait-of-a-young-confident-smiling-asian-chinese-businessman.jpg?s=612x612&w=0&k=20&c=_2_An_UyM2EiLreTqEj3i8RciDlcSaRdvss6e1ZOqP8=" alt="">
+                    <p>Dr. Yami Trevos</p>
+                    <p>Formal writing</p>
+                </div>
+                <div class="mentor">
+                    <img src="https://media.istockphoto.com/id/1562630006/photo/elegance-businessman-in-a-blue-formal-waist-up-suit-jacket-gazes-straight-to-the-camera.jpg?s=612x612&w=0&k=20&c=tCqRVKiDmn0ZsE0Ew3hyaZbJdVGa5kJ73M_paB2s7D4=" alt="">
+                    <p>Prof. Lena Roy</p>
+                    <p>UI masters</p>
+                </div>
+                <div class="mentor">
+                    <img src="https://i.pinimg.com/736x/2a/7d/4c/2a7d4c4bc1381a476b8b8a85885ac392.jpg" alt="">
+                    <p>Talvinder Singh</p>
+                    <p>Study abroad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>    
+        // Create starry background
+        function createStars() {
+            const starsContainer = document.getElementById('stars-background');
+            const starCount = 4000;
+    
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>

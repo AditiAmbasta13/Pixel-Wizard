@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnyVerse - Resource Library</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body{
+            margin-left: 50px;
+        }
+        .library-container {
+            font-family: 'Pneuemontreal';
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .library-container{
+            margin-top: -30px;
+        }
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .filter-btn {
+            background-color: #383947;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary);
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .book-card {
+            background-color: #383947;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+        .book-cover {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .book-info {
+            padding: 15px;
+        }
+        .book-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .book-author {
+            font-size: 14px;
+            color: #666;
+        }
+        #stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: rgb(66, 77, 94);
+    border-radius: 50%;
+}
+    </style>
+</head>
+<body>
+    <div id="stars-background"></div>
+    <div class="wavy-background">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="home.html" title="Home"><i class="fa-solid fa-house" style="font-size: 18px; color: var(--secondary);"></i><span>Home</span></a></li>
+            <li><a href="mentors.html" title="Mentorship"><i class="fas fa-user-friends" style="font-size: 18px; color: var(--secondary);"></i><span>Mentorship</span></a></li>
+            <li><a href="library.html" title="Courses"><i class="fas fa-book" style="font-size: 18px; color: var(--secondary);"></i><span>Resources</span></a></li>
+            <li><a href="contact.html" title="Profile"><i class="fa-solid fa-phone"style="font-size: 18px; color: var(--secondary);"></i><span>Contact Us</span></a></li>
+        </ul>
+    </nav>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-items-logo">
+                <img src="./images/community.png" alt="">
+                <a href="community.html" class="nav-item">Community</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/profile.png" alt="">
+                <a href="profile.html" class="nav-item">Profile</a>
+            </div>
+            <div class="nav-items-logo">
+                <img src="./images/logout.png" alt="" style="margin-bottom: 8px;">
+                <a href="#" class="nav-item highlight">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <main class="library-container">
+        <h1>Resource Library</h1>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="python">Python</button>
+            <button class="filter-btn" data-filter="javascript">JavaScript</button>
+            <button class="filter-btn" data-filter="java">Java</button>
+            <button class="filter-btn" data-filter="csharp">C#</button>
+        </div>
+        <div class="books-grid" id="booksGrid">
+            <!-- Books will be dynamically added here -->
+        </div>
+    </main>
+
+    <script>
+        const books = [
+            { title: "Python Crash Course", author: "Eric Matthes", cover: "https://yasoob.me/wp-content/uploads/2015/08/cover.png", category: "python" },
+            { title: "Learning Python", author: "Mark Lutz", cover: "https://m.media-amazon.com/images/I/81drimuUhOS._AC_UF1000,1000_QL80_.jpg", category: "python" },
+            { title: "JavaScript: The Good Parts", author: "Douglas Crockford", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e9617d19293361.562d7f22ac57d.gif", category: "javascript" },
+            { title: "Eloquent JavaScript", author: "Marijn Haverbeke", cover: "https://media.springernature.com/full/springer-static/cover-hires/book/978-1-4842-6418-8", category: "javascript" },
+            { title: "Effective Java", author: "Joshua Bloch", cover: "https://media.springernature.com/full/springer-static/cover-hires/book/978-1-4302-0032-1", category: "java" },
+            { title: "Java: A Beginner's Guide", author: "Herbert Schildt", cover: "https://bookcover4u.com/pro/Educational-book-cover-design-P1484804032EDB-Java-web-design-internet-business-java.jpg", category: "java" },
+            { title: "C# in Depth", author: "Jon Skeet", cover: "https://media.springernature.com/full/springer-static/cover-hires/book/978-1-4842-7147-6", category: "csharp" },
+            { title: "C# 9.0 in a Nutshell", author: "Joseph Albahari", cover: "https://csharp-book.softuni.org/assets/CSharp-Programming-Basics-Book-Cover.png", category: "csharp" },
+        ];
+
+        const booksGrid = document.getElementById('booksGrid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        function createBookCard(book) {
+            return `
+                <div class="book-card" data-category="${book.category}">
+                    <img src="${book.cover}" alt="${book.title}" class="book-cover">
+                    <div class="book-info">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">${book.author}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function displayBooks(category = 'all') {
+            booksGrid.innerHTML = '';
+            books.forEach(book => {
+                if (category === 'all' || book.category === category) {
+                    booksGrid.innerHTML += createBookCard(book);
+                }
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                displayBooks(button.dataset.filter);
+            });
+        });
+        // Create starry background
+        function createStars() {
+            const starsContainer = document.getElementById('stars-background');
+            const starCount = 5000;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Initial display of all books
+        displayBooks();
+        createStars();
+    </script>
+</body>
+</html>

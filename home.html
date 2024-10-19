@@ -6,6 +6,60 @@
     <title>Learny Verse</title>
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        #ai-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
+        #ai-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4a90e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        #ai-icon:hover {
+            transform: scale(1.1);
+        }
+        #ai-icon img {
+            width: 40px;
+            height: 40px;
+        }
+        #reminder-box {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        #reminder-title {
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        #reminder-message {
+            font-size: 14px;
+            color: black;
+        }
+        #reminder-time {
+            font-weight: bold;
+            color: #e24a4a;
+        }
+        #reminder-location {
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <div id="stars-background"></div>
@@ -58,7 +112,7 @@
                 <div class="info-section">
                     <h3>What is that <span class="quest">?</span>
                     </h3>
-                    <p>It's an educational platform for IT specialists where learning meets freedom and ease. Our platform is designed to empower you on your journey to meaningful growth and knowledge.</p>
+                    <p>LearnyVerse is your next-gen learning ecosystem where education gets a fun twist! We're not just another learning platform - we're a community-driven space where tech enthusiasts, from beginners to experts, come together to learn, grow, and innovate.</p>
                 </div>
             </div>
             <div class="logo">
@@ -68,7 +122,7 @@
     </main>
     <section class="about-section">
         <h2>About Us!</h2>
-        <p>LearnyVerse is your gateway to <span class="highlight-word">personalized</span> IT education. We offer a <span class="highlight-word">flexible</span> learning environment that adapts to your schedule and learning style.</p>
+        <p>LearnyVerse is your gateway to <span class="highlight-word">personalized</span> education. We offer a <span class="highlight-word">flexible</span> learning environment that adapts to your schedule and learning style.</p>
         <div class="features">
             <div class="feature">
                 <h3>Community-Driven</h3>
@@ -83,11 +137,23 @@
                 <p>Accelerate your career with <span class="highlight-word">industry-aligned</span> courses and certifications. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, doloremque minima magnam dicta obcaecati earum.</p>
             </div>
             <div class="feature">
-                <h3>Career Growth</h3>
+                <h3>Connect with Mentors</h3>
                 <p>Accelerate your career with <span class="highlight-word">industry-aligned</span> courses and certifications. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis recusandae sequi illum non provident aperiam.</p>
             </div>
         </div>
     </section>
+
+    <div id="ai-assistant">
+        <div id="reminder-box">
+            <div id="reminder-title"></div>
+            <div id="reminder-message"></div>
+            <div id="reminder-time"></div>
+            <div id="reminder-location"></div>
+        </div>
+        <div id="ai-icon">
+            <img src="./images/logo.png" alt="AI Assistant">
+        </div>
+    </div>
 
     <footer>
         <div class="footer-main">
@@ -117,7 +183,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 LearnyVerse. All rights reserved.</p>
@@ -129,7 +194,7 @@
     <script>
         // Check user type from URL parameter
         const urlParams = new URLSearchParams(window.location.search);
-        const userType = urlParams.get('userType');
+        const userType = urlParams.get('userType') || 'mentee';
 
         const sessionActionButton = document.getElementById('session-action');
         const eventsButton = document.getElementById('view-events');
@@ -143,6 +208,99 @@
             sessionActionButton.href = 'bookings.html';
             eventsButton.textContent = 'Upcoming Learning Sessions';
         }
+
+        // AI Assistant functionality
+        const aiIcon = document.getElementById('ai-icon');
+        const reminderBox = document.getElementById('reminder-box');
+        const reminderTitle = document.getElementById('reminder-title');
+        const reminderMessage = document.getElementById('reminder-message');
+        const reminderTime = document.getElementById('reminder-time');
+        const reminderLocation = document.getElementById('reminder-location');
+
+        let isVisible = false;
+        let currentReminder = null;
+        let reminders = [];
+
+        const menteeReminders = [
+            {
+                title: 'Web Development Basics',
+                message: 'Learn the fundamentals of HTML, CSS, and JavaScript. This session will cover creating a simple webpage and styling it.',
+                time: '2:00 PM - 3:30 PM',
+                location: 'Virtual Room A'
+            },
+            {
+                title: 'Assignment Submission',
+                message: 'Don\'t forget to submit your project on "Building a Responsive Website". Make sure to include all required files and documentation.',
+                time: '5:00 PM',
+                location: 'LearnyVerse Portal'
+            },
+            {
+                title: 'Group Study: Data Structures',
+                message: 'Join your peers to review complex data structures. Today\'s focus: Binary Trees and Heap.',
+                time: '7:00 PM - 8:30 PM',
+                location: 'Study Room 3'
+            }
+        ];
+
+        const mentorReminders = [
+            {
+                title: 'Mentoring Session: Advanced JavaScript',
+                message: 'You\'ll be guiding students through advanced JavaScript concepts, including closures, promises, and async/await.',
+                time: '2:00 PM - 3:30 PM',
+                location: 'Virtual Room B'
+            },
+            {
+                title: 'Review Student Assignments',
+                message: 'Please review and provide feedback on the "Building a Responsive Website" projects submitted by your mentees.',
+                time: '4:00 PM - 5:30 PM',
+                location: 'LearnyVerse Portal'
+            },
+            {
+                title: 'Faculty Meeting: Curriculum Update',
+                message: 'Attend the meeting to discuss updates to the web development curriculum for the next semester.',
+                time: '6:00 PM - 7:00 PM',
+                location: 'Conference Room 2'
+            }
+        ];
+
+        function showReminder(reminder) {
+            currentReminder = reminder;
+            reminderTitle.textContent = reminder.title;
+            reminderMessage.textContent = reminder.message;
+            reminderTime.textContent = `Time: ${reminder.time}`;
+            reminderLocation.textContent = `Location: ${reminder.location}`;
+            reminderBox.style.display = 'block';
+            isVisible = true;
+        }
+
+        function toggleReminder() {
+            if (isVisible) {
+                reminderBox.style.display = 'none';
+                isVisible = false;
+            } else if (currentReminder) {
+                showReminder(currentReminder);
+            }
+        }
+
+        aiIcon.addEventListener('click', toggleReminder);
+
+        function startReminders() {
+            reminders = userType === 'mentee' ? menteeReminders : mentorReminders;
+            reminders.forEach((reminder, index) => {
+                setTimeout(() => {
+                    showReminder(reminder);
+                    setTimeout(() => {
+                        if (isVisible) {
+                            reminderBox.style.display = 'none';
+                            isVisible = false;
+                        }
+                    }, 5000);
+                }, index * 120000); // 2 minutes gap
+            });
+        }
+
+        // Start the reminders
+        startReminders();
     </script>
 </body>
 </html>
