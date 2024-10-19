@@ -29,6 +29,16 @@
             font-family: 'Public Sans', sans-serif;
             font-weight: 700;
         }
+        .search-mentors{
+            text-decoration: none;
+            background-color: var(--primary);
+            color: var(--text-color);
+            padding: 2px 20px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            height: 35px;
+        }
     </style>
 </head>
 <body>
@@ -65,7 +75,10 @@
     
 
     <div class="container">
-        <h1 class="event-heading">Book Sessions</h1>
+        <div style="display: flex; gap: 50px; align-items: center;">
+            <h1 class="event-heading">Book Sessions</h1>
+            <a href="mentors.html" class="search-mentors">Search for Mentors</a>
+        </div>
         <div class="alert-container" id="alertContainer">
             <div class="alert" id="alertMessage"></div>
         </div>
